@@ -9,19 +9,17 @@ const genAI = new GoogleGenerativeAI(aiConfig.gemini.apiKey);
 export const textAndImage = async (prompt, images) => {
   const model = genAI.getGenerativeModel({
     model: aiConfig.gemini.textAndImageModel,
+    safetySettings: aiConfig.gemini.safetySettings,
   });
 
   // prompt is a single string
   // imageParts is an array containing base64 strings of images
 
   let imageParts = await processImages(images);
-  // console.log("textAndImage | imageParts", imageParts);
 
   try {
     const result = await model.generateContent([prompt, ...imageParts]);
-    const response = await result.response;
-    const chatResponse = response.text();
-    console.log("textAndImage chatResponse", chatResponse);
+    const chatResponse = result?.response?.text();
 
     return { result: chatResponse };
   } catch (error) {

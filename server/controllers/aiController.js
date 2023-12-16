@@ -14,7 +14,6 @@ export const aiController = async (req, res) => {
     res.status(200).json({ result: botReply.result });
   } else if (modelType === "text_and_image") {
     const botReply = await textAndImage(req.body.prompt, req.body.imageParts);
-    console.log("botReply", botReply);
 
     if (botReply?.Error) {
       return res.status(404).json({ Error: botReply.Error });
