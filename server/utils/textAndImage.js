@@ -23,6 +23,7 @@ export const textAndImage = async (prompt, images) => {
 
     return { result: chatResponse };
   } catch (error) {
+    console.error("textAndImage | error", error);
     return { Error: "Uh oh! Caught error while fetching AI response" };
   }
 };

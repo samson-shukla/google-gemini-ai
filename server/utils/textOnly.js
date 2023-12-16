@@ -18,6 +18,7 @@ export const textOnly = async (prompt) => {
 
     return { result: chatResponse };
   } catch (error) {
+    console.error("textOnly | error", error);
     return { Error: "Uh oh! Caught error while fetching AI response" };
   }
 };
