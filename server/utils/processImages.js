@@ -1,29 +1,6 @@
 import axios from "axios";
 import mime from "mime-types";
 
-const isBufferString = (input) => {
-  // Check if the input is a string
-  if (typeof input !== "string") {
-    return false;
-  }
-
-  // Check if the input is a hexadecimal string representing a buffer
-  const hexBufferRegex = /^[0-9A-Fa-f]+$/;
-  return hexBufferRegex.test(input);
-};
-
-const bufferToGenerativePart = async (bufferImage) => {
-  // Get the MIME type using mime-types
-  const mimeType = mime.lookup(imageBuffer);
-
-  return {
-    inlineData: {
-      data: bufferImage.toString("base64"),
-      mimeType,
-    },
-  };
-};
-
 export const urlToGenerativePart = async (url) => {
   try {
     // Make a GET request to the image URL
@@ -59,11 +36,7 @@ export const urlToGenerativePart = async (url) => {
 export const processImages = async (images) => {
   try {
     const imageParts = await Promise.all(
-      images.map(async (img) =>
-        isBufferString(img)
-          ? await bufferToGenerativePart(img)
-          : await urlToGenerativePart(img)
-      )
+      images.map(async (img) => await urlToGenerativePart(img))
     );
 
     return imageParts;
