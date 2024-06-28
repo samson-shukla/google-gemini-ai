@@ -4,17 +4,17 @@ This Node.js server is designed to consume Google's Gemini API, a powerful gener
 
 1. **Text Generation from Text-Only Input**
 
-   - Model Name: `gemini-pro`
+   - Model Name: `gemini-1.5-flash`
 
 2. **Text Generation from Text-and-Image Input (Multimodal)**
-   - Model Name: `gemini-pro-vision`
+   - Model Name: `gemini-1.5-flash`
 
 ## Prerequisites
 
 Before running the project, make sure you have the following:
 
 - Node.js version 18 and above installed.
-- Gemini API keys generated from [Google AI Studio](https://makersuite.google.com/).
+- Gemini API keys generated from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
 ## Getting Started
 
@@ -55,7 +55,7 @@ Before running the project, make sure you have the following:
 - For `"text_only"` model, modelType and prompt is required
 - For `"text_and_image"` model, modelType, prompt and imageParts is required
 
-Request body example of `"text_and_image"` model
+Request body example of `"text_only"` model
 
 ```json
 {
@@ -78,6 +78,6 @@ Request body example of `"text_and_image"` model
 
 To implement the views, you can integrate any frontend library of your choice, such as ReactJs, Swelte, etc.
 
-Feel free to enhance and customize the project to meet your specific needs. If you encounter any issues or have suggestions for improvements, please refer to the [GitHub repository](https://github.com/samson-shukla/google-gemini-ai) and open an issue.
+Feel free to enhance and customize the project to meet your specific needs. If you encounter any issues or have suggestions for improvements, please [open an issue](https://github.com/samson-shukla/google-gemini-ai/issues).
 
 Happy coding! 🚀
